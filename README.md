@@ -21,4 +21,4 @@ Sample output:
 	Linux/JunOS/MRV/Dell:  00:11:22:aa:bb:cc
 	ScreenOS:              001122aabbcc
 	HP:                    001122-aabbcc
-	Brocade:               0011.22aa.bbcc
+	Brocade/Cisco:         0011.22aa.bbcc
