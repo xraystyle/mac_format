@@ -3,10 +3,10 @@ MAC Address Formatter
 
 Output a MAC address in the formats used by various vendors on their router/switch hardware.
 
-```Usage:
-  mac_format <mac>
-  mac_format -h | --help
-  mac_format <mac> [-c|--convert <format>]```
+	Usage:
+	  mac_format <mac>
+	  mac_format -h | --help
+	  mac_format <mac> [-c|--convert <format>]
 
 Recognized vendor MAC formats: Linux, Juniper ScreenOS and Junos, MRV, Brocade, HP and Dell Switches.
 
