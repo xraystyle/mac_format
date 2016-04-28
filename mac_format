@@ -26,7 +26,7 @@ Usage:
 Options:
   none          Show MAC in all known formats.
   -h --help     Show this screen.
-  -c --convert  Specify a MAC address format. (Linux|Brocade|Cisco|ScreenOS|JunOS|MRV|HP|Dell)
+  -c --convert  Specify a MAC address format. (Linux|Brocade|Cisco|ScreenOS|JunOS|MRV|HP|Dell|Windows)
 
 DOCOPT
 
@@ -46,9 +46,10 @@ end
 # requested format
 def convert(mac, format=nil)
   # Recognized formats
-  formats = %w(linux screenos junos mrv hp brocade dell cisco)
+  formats = %w(linux screenos junos mrv hp brocade dell cisco windows)
 
   linux = mac.scan(/../).join(':')
+  windoze = mac.scan(/../).join('-')
   hp = mac.scan(/....../).join('-')
   brocade = mac.scan(/..../).join('.')
   if format
@@ -69,10 +70,13 @@ def convert(mac, format=nil)
       hp
     when "brocade", "cisco"
       brocade
+    when "windows"
+        windoze
     end
 
   else
     formatted_mac = "\nLinux/JunOS/MRV/Dell:  #{linux}\n"
+    formatted_mac << "Windows:               #{windoze}\n"
     formatted_mac << "ScreenOS:              #{mac}\n"
     formatted_mac << "HP:                    #{hp}\n"
     formatted_mac << "Brocade/Cisco:         #{brocade}"
