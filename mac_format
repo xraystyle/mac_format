@@ -26,6 +26,7 @@
 require 'docopt'
 # system('clear')
 
+# Create heredoc for Docopt parser.
 doc = <<DOCOPT
 MAC Address Formatter
 
@@ -80,7 +81,7 @@ end
 
 
 
-########### Start doing stuff.
+########### Start doing stuff. ###########
 begin
   # parse args.
   dict = Docopt::docopt(doc) 
