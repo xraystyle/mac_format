@@ -21,7 +21,19 @@
 # lowercase, hyphenated. 0cc47a-ae39f5
 
 # Brocade TurboIron/MLX/ICX/CER, etc:
-# lowercase, dots. d4ae.52c6.aeec 
+# lowercase, dots. d4ae.52c6.aeec
+
+# Check for docopt gem.
+gem_status = `gem list | grep docopt`
+
+if gem_status.length == 0
+  puts "The Docopt gem does not appear to be installed, which this app requires."
+  puts "You can install it by running the command 'sudo gem install docopt'"
+  puts "If you're using a Ruby version manager like RVM you may not want to use sudo."
+  puts "If you don't know what that means, it likely doesn't apply to you and you can run the command as-is."
+  puts "More info about Docopt can be found here: http://docopt.org/\n\n"
+  exit!
+end
 
 require 'docopt'
 # system('clear')
