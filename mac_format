@@ -38,7 +38,7 @@ Usage:
 Options:
   none          Convert to standard Linux format.
   -h --help     Show this screen.
-  -c --convert  Specify a MAC address format. (Linux|Brocade|ScreenOS|JunOS|MRV|HP|Dell)
+  -c --convert  Specify a MAC address format. (Linux|Brocade|Cisco|ScreenOS|JunOS|MRV|HP|Dell)
 
 DOCOPT
 
@@ -58,7 +58,7 @@ end
 # requested format
 def convert(mac, format=nil)
   # Recognized formats
-  formats = %w(linux screenos junos mrv hp brocade dell)
+  formats = %w(linux screenos junos mrv hp brocade dell cisco)
 
   linux = mac.scan(/../).join(':')
   hp = mac.scan(/....../).join('-')
@@ -79,7 +79,7 @@ def convert(mac, format=nil)
       mac # already formatted.
     when "hp"
       hp
-    when "brocade"
+    when "brocade", "cisco"
       brocade
     end
 
@@ -87,7 +87,7 @@ def convert(mac, format=nil)
     formatted_mac = "\nLinux/JunOS/MRV/Dell:  #{linux}\n"
     formatted_mac << "ScreenOS:              #{mac}\n"
     formatted_mac << "HP:                    #{hp}\n"
-    formatted_mac << "Brocade:               #{brocade}"
+    formatted_mac << "Brocade/Cisco:         #{brocade}"
   end
   formatted_mac
 end
