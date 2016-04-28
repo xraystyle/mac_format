@@ -1,0 +1,103 @@
+#!/usr/bin/env ruby 
+
+# MAC address formats by device:
+
+# Most Linux distros: done
+# lowercase, colons. 0c:c4:7a:1f:02:a4 
+
+# ScreenOS Firewall: done
+# Lowercase, no symbols. 0cc47aae39f5
+
+# Junos Firewall: done
+# Same as Linux standard.
+
+# MRV: done
+# Same as Linux standard.
+
+# Dell:
+# Same as Linux standard.
+
+# HP Switch:
+# lowercase, hyphenated. 0cc47a-ae39f5
+
+# Brocade TurboIron/MLX/ICX/CER, etc:
+# lowercase, dots. d4ae.52c6.aeec 
+
+require 'docopt'
+# system('clear')
+
+doc = <<DOCOPT
+MAC Address Formatter
+
+Usage:
+  #{File.basename(__FILE__)} <mac>
+  #{File.basename(__FILE__)} -h | --help
+  #{File.basename(__FILE__)} <mac> [-c|--convert <format>] 
+
+Options:
+  none          Convert to standard Linux format.
+  -h --help     Show this screen.
+  -c --convert  Specify a MAC address format. (Linux|Brocade|ScreenOS|JunOS|MRV|HP|Dell)
+
+DOCOPT
+
+
+# strip the crap out of the mac,
+# leaving only alphanumerics.
+def strip_mac(mac)
+  clean = mac.gsub(/[^\d\w]/, '').strip.chomp
+  unless clean.length == 12
+    puts "#{mac} appears to be an invalid MAC address!"
+    exit!
+  end
+  clean
+end
+
+# Convert the MAC to the
+# requested format
+def convert(mac, format="linux")
+  formats = %w(linux screenos junos mrv hp brocade dell)
+  unless formats.include?(format)
+    puts "Unknown format: #{format}"
+    puts "Available formats: #{formats}"
+    puts
+    exit!
+  end
+  # puts "#{mac}, #{format}"
+  formatted_mac = case format
+  when "linux", "junos", "mrv", "dell"
+    mac.scan(/../).join(':')
+  when "screenos"
+      mac
+  when "hp"
+    mac.scan(/....../).join('-')
+  when "brocade"
+    mac.scan(/..../).join('.')
+  end
+
+  formatted_mac
+end
+
+
+
+########### Start doing stuff.
+begin
+  # parse args.
+  dict = Docopt::docopt(doc) 
+  format = dict["<format>"].strip.chomp.downcase if dict["<format>"]
+  # validate the mac address.
+  clean_mac = strip_mac(dict['<mac>'])
+  # convert to the desired format.
+  if dict["--convert"]
+    converted = convert(clean_mac, format)  
+  else
+    converted = convert(clean_mac)
+  end
+  
+  puts converted
+  puts
+rescue Docopt::Exit => e
+  puts e.message  
+end
+
+exit
