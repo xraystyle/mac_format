@@ -56,26 +56,39 @@ end
 
 # Convert the MAC to the
 # requested format
-def convert(mac, format="linux")
+def convert(mac, format=nil)
+  # Recognized formats
   formats = %w(linux screenos junos mrv hp brocade dell)
-  unless formats.include?(format)
-    puts "Unknown format: #{format}"
-    puts "Available formats: #{formats}"
-    puts
-    exit!
-  end
-  # puts "#{mac}, #{format}"
-  formatted_mac = case format
-  when "linux", "junos", "mrv", "dell"
-    mac.scan(/../).join(':')
-  when "screenos"
-      mac
-  when "hp"
-    mac.scan(/....../).join('-')
-  when "brocade"
-    mac.scan(/..../).join('.')
-  end
 
+  linux = mac.scan(/../).join(':')
+  hp = mac.scan(/....../).join('-')
+  brocade = mac.scan(/..../).join('.')
+  if format
+    # validate passed format
+    unless formats.include?(format)
+      puts "Unknown format: #{format}"
+      puts "Available formats: #{formats}"
+      puts
+      exit!
+    end
+
+    formatted_mac = case format
+    when "linux", "junos", "mrv", "dell"
+      linux
+    when "screenos"
+      mac # already formatted.
+    when "hp"
+      hp
+    when "brocade"
+      brocade
+    end
+
+  else
+    formatted_mac = "\nLinux/JunOS/MRV/Dell:  #{linux}\n"
+    formatted_mac << "ScreenOS:              #{mac}\n"
+    formatted_mac << "HP:                    #{hp}\n"
+    formatted_mac << "Brocade:               #{brocade}"
+  end
   formatted_mac
 end
 
