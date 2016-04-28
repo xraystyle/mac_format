@@ -1,28 +1,5 @@
 #!/usr/bin/env ruby 
 
-# MAC address formats by device:
-
-# Most Linux distros: done
-# lowercase, colons. 0c:c4:7a:1f:02:a4 
-
-# ScreenOS Firewall: done
-# Lowercase, no symbols. 0cc47aae39f5
-
-# Junos Firewall: done
-# Same as Linux standard.
-
-# MRV: done
-# Same as Linux standard.
-
-# Dell:
-# Same as Linux standard.
-
-# HP Switch:
-# lowercase, hyphenated. 0cc47a-ae39f5
-
-# Brocade TurboIron/MLX/ICX/CER, etc:
-# lowercase, dots. d4ae.52c6.aeec
-
 # Check for docopt gem.
 gem_status = `gem list | grep docopt`
 
@@ -36,7 +13,6 @@ if gem_status.length == 0
 end
 
 require 'docopt'
-# system('clear')
 
 # Create heredoc for Docopt parser.
 doc = <<DOCOPT
@@ -48,7 +24,7 @@ Usage:
   #{File.basename(__FILE__)} <mac> [-c|--convert <format>] 
 
 Options:
-  none          Convert to standard Linux format.
+  none          Show MAC in all known formats.
   -h --help     Show this screen.
   -c --convert  Specify a MAC address format. (Linux|Brocade|Cisco|ScreenOS|JunOS|MRV|HP|Dell)
 
