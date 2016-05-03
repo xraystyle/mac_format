@@ -9,13 +9,29 @@ puts "This script will install the following:"
 puts "1. The mac_formatter command line tool"
 puts "2. The Docopt gem, required by the cli tool"
 puts "3. The OS X services providing right-click conversions"
+print "Would you like to continue? (y/n) > "
+response = gets.chomp.strip.downcase
 
-# prompt for confirmation.
+options = "yn"
+until options.include? response
+	puts "Invalid option. Enter y or n."
+	print "> "
+	response = gets.chomp.strip.downcase
+end
 
+case response
+when "n"
+	puts "Exiting..."
+	sleep 2
+	exit
+when "y"
+	puts "Begining install..."
+	sleep 2
+	puts
+end
 
 
 # install docopt
-
 def install_docopt
 	# Check for docopt gem. Use system gem, not rbenv or rvm.
 	# The OS X services will require use of system Ruby.
