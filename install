@@ -1,8 +1,11 @@
 #!/usr/bin/ruby
 
+# Preamble
 system "clear"
 
 puts "Mac Formatter Installer"
+puts
+puts "You can update or reinstall Mac Formatter by running this script a second time."
 puts
 puts
 puts "This script will install the following:"
@@ -31,7 +34,7 @@ when "y"
 end
 
 
-# install docopt
+# install the Docopt gem.
 def install_docopt
 	# Check for docopt gem. Use system gem, not rbenv or rvm.
 	# The OS X services will require use of system Ruby.
@@ -51,15 +54,18 @@ def install_docopt
 	end	
 end
 
+
+# Install the mac_format CLI Tool.
 def install_cli_tool
+	# check for /usr/local/bin. Create if necessary.
 	if File.directory?('/usr/local/bin')
 		puts "/usr/local/bin exists..."
-		Dir.chdir('/usr/local/bin')
 	else
 		puts "/usr/local/bin does not exist, creating..."
 		Dir.mkdir('/usr/local/bin', 0755)
-		Dir.chdir('/usr/local/bin')
 	end
+
+	Dir.chdir('/usr/local/bin')
 
 	# Download mac_format
 	puts "Downloading CLI tool..."
@@ -68,21 +74,46 @@ def install_cli_tool
 		puts "mac_format CLI tool installed..."
 	else
 		puts "Error installing CLI tool."
+		puts "mac_format failed to download."
 		exit
 	end
-	
+end
+
+# Install the OS X contextual menu Automator services.
+def install_services
+	# Files to download
+	curls = [	"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-brocade", 
+						"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-HP",
+						"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-linux",
+						"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-screenos",
+						"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-windows"
+					]
+
+	Dir.chdir(File.expand_path("~/Library/services"))
+	puts "Downloading the OS X right-click services..."
+
+	curls.each do |c|
+		`#{c}`
+		unless $?.success?
+			puts "There was an error downloading one of the OS X services."
+			puts "Try running the installer again."
+			exit
+		end
+	end
+
+	puts "OS X services installed successfully."
 
 end
 
+
+########################### Begin Script ###########################
+
+install_docopt
 install_cli_tool
+install_services
 
-
-
-
-
-
-
-
+puts "MAC Formatter appears to have installed successfully."
+puts "See the readme at https://github.com/xraystyle/mac_format for usage instructions."
 
 
 
