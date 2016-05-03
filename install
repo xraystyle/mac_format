@@ -12,6 +12,7 @@ puts "This script will install the following:"
 puts "1. The mac_formatter command line tool"
 puts "2. The Docopt gem, required by the cli tool"
 puts "3. The OS X services providing right-click conversions"
+puts "Note: You may have to type your admin password to install some components."
 print "Would you like to continue? (y/n) > "
 response = gets.chomp.strip.downcase
 
@@ -45,6 +46,7 @@ def install_docopt
 		puts "Installing..."
 		`sudo /usr/bin/gem install docopt --no-doc --no-ri`
 		if $?.success?
+			puts
 			puts "Docopt installed successfully."
 		else
 			puts "Docopt gem failed to install."
@@ -69,9 +71,10 @@ def install_cli_tool
 
 	# Download mac_format
 	puts "Downloading CLI tool..."
-	`curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/mac_format && chmod a+x mac_format`
+	`curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/mac_format && chmod a+x mac_format`
 	if $?.success?
 		puts "mac_format CLI tool installed..."
+		puts
 	else
 		puts "Error installing CLI tool."
 		puts "mac_format failed to download."
@@ -92,6 +95,7 @@ def install_services
 	end
 	`rm services.tar`
 	puts "OS X services installed successfully."
+	puts 
 
 end
 
@@ -104,22 +108,7 @@ install_services
 
 puts "MAC Formatter appears to have installed successfully."
 puts "See the readme at https://github.com/xraystyle/mac_format for usage instructions."
+puts
+puts
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+exit 0
