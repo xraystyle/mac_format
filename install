@@ -51,5 +51,54 @@ def install_docopt
 	end	
 end
 
+def install_cli_tool
+	if File.directory?('/usr/local/bin')
+		puts "/usr/local/bin exists..."
+		Dir.chdir('/usr/local/bin')
+	else
+		puts "/usr/local/bin does not exist, creating..."
+		Dir.mkdir('/usr/local/bin', 0755)
+		Dir.chdir('/usr/local/bin')
+	end
+
+	# Download mac_format
+	puts "Downloading CLI tool..."
+	`curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/mac_format && chmod a+x mac_format`
+	if $?.success?
+		puts "mac_format CLI tool installed..."
+	else
+		puts "Error installing CLI tool."
+		exit
+	end
+	
+
+end
+
+install_cli_tool
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
