@@ -12,7 +12,7 @@ puts "3. The OS X services providing right-click conversions"
 print "Would you like to continue? (y/n) > "
 response = gets.chomp.strip.downcase
 
-options = "yn"
+options = %w(y n)
 until options.include? response
 	puts "Invalid option. Enter y or n."
 	print "> "
