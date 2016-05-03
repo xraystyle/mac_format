@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby 
+#!/usr/bin/ruby
 
 # Check for docopt gem.
 gem_status = `gem list | grep docopt`
@@ -31,14 +31,32 @@ Options:
 DOCOPT
 
 
-# strip the crap out of the mac,
-# leaving only alphanumerics.
-def strip_mac(mac)
-  clean = mac.gsub(/[^\d\w]/, '').strip.chomp
-  unless clean.length == 12
-    puts "#{mac} appears to be an invalid MAC address!"
-    exit!
+# Validate the mac address.
+def valid_mac?(mac)
+  valid_chars = "1234567890abcdef"
+
+  if mac.length == 12
+    true # great, keep going.
+  else
+    return false
   end
+
+  mac.split('').each do |c|
+    if valid_chars.include? c
+      next
+    else
+      return false
+    end
+  end
+
+  true # yay.
+end
+
+
+# strip the crap out of the mac,
+# leaving only alphanumerics. 
+def strip_mac(mac)
+  clean = mac.gsub(/[^\d\w]/, '').strip.chomp.downcase
   clean
 end
 
@@ -91,8 +109,16 @@ begin
   # parse args.
   dict = Docopt::docopt(doc) 
   format = dict["<format>"].strip.chomp.downcase if dict["<format>"]
-  # validate the mac address.
+
+  # clean the mac.
   clean_mac = strip_mac(dict['<mac>'])
+
+  # validate it.
+  unless valid_mac?(clean_mac)
+    puts "\"#{clean_mac}\" appears to be an invalid MAC address!"
+    exit
+  end
+
   # convert to the desired format.
   if dict["--convert"]
     converted = convert(clean_mac, format)  

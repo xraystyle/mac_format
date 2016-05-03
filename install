@@ -1,0 +1,135 @@
+#!/usr/bin/ruby
+
+# Preamble
+system "clear"
+
+puts "Mac Formatter Installer"
+puts
+puts "You can update or reinstall Mac Formatter by running this script a second time."
+puts
+puts
+puts "This script will install the following:"
+puts "1. The mac_formatter command line tool"
+puts "2. The Docopt gem, required by the cli tool"
+puts "3. The OS X services providing right-click conversions"
+print "Would you like to continue? (y/n) > "
+response = gets.chomp.strip.downcase
+
+options = %w(y n)
+until options.include? response
+	puts "Invalid option. Enter y or n."
+	print "> "
+	response = gets.chomp.strip.downcase
+end
+
+case response
+when "n"
+	puts "Exiting..."
+	sleep 2
+	exit
+when "y"
+	puts "Begining install..."
+	sleep 2
+	puts
+end
+
+
+# install the Docopt gem.
+def install_docopt
+	# Check for docopt gem. Use system gem, not rbenv or rvm.
+	# The OS X services will require use of system Ruby.
+	docopt_status = `/usr/bin/gem list | grep docopt`
+
+	if docopt_status.length == 0
+		puts "Docopt gem does not appear to be installed."
+		puts "Installing..."
+		`sudo /usr/bin/gem install docopt --no-doc --no-ri`
+		if $?.success?
+			puts "Docopt installed successfully."
+		else
+			puts "Docopt gem failed to install."
+			puts "Check your Ruby configuration and try again."
+			exit
+		end
+	end	
+end
+
+
+# Install the mac_format CLI Tool.
+def install_cli_tool
+	# check for /usr/local/bin. Create if necessary.
+	if File.directory?('/usr/local/bin')
+		puts "/usr/local/bin exists..."
+	else
+		puts "/usr/local/bin does not exist, creating..."
+		Dir.mkdir('/usr/local/bin', 0755)
+	end
+
+	Dir.chdir('/usr/local/bin')
+
+	# Download mac_format
+	puts "Downloading CLI tool..."
+	`curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/mac_format && chmod a+x mac_format`
+	if $?.success?
+		puts "mac_format CLI tool installed..."
+	else
+		puts "Error installing CLI tool."
+		puts "mac_format failed to download."
+		exit
+	end
+end
+
+# Install the OS X contextual menu Automator services.
+def install_services
+	# Files to download
+	curls = [	"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-brocade", 
+						"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-HP",
+						"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-linux",
+						"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-screenos",
+						"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-windows"
+					]
+
+	Dir.chdir(File.expand_path("~/Library/services"))
+	puts "Downloading the OS X right-click services..."
+
+	curls.each do |c|
+		`#{c}`
+		unless $?.success?
+			puts "There was an error downloading one of the OS X services."
+			puts "Try running the installer again."
+			exit
+		end
+	end
+
+	puts "OS X services installed successfully."
+
+end
+
+
+########################### Begin Script ###########################
+
+install_docopt
+install_cli_tool
+install_services
+
+puts "MAC Formatter appears to have installed successfully."
+puts "See the readme at https://github.com/xraystyle/mac_format for usage instructions."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
