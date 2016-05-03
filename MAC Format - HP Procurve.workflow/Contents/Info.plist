@@ -8,7 +8,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>MAC Format: HP Procurve</string>
+				<string>MAC Format - HP Procurve</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>

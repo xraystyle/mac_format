@@ -59,7 +59,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>export PATH=$PATH:/Users/ben/Dropbox/config/bin/
+					<string>export PATH=$PATH:/usr/local/bin
 for f in "$@"
 do
 	mac_format "$f" -c screenos
@@ -505,26 +505,26 @@ done</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>22F687BB-3DC0-41F2-885B-B2FEFF1E4009</key>
-		<dict>
-			<key>from</key>
-			<string>E1F250B0-45C8-4DFC-B21C-C6E9AFD06D1D - E1F250B0-45C8-4DFC-B21C-C6E9AFD06D1D</string>
-			<key>to</key>
-			<string>53843ECF-35B2-41E9-BEE8-26023D96C52F - 53843ECF-35B2-41E9-BEE8-26023D96C52F</string>
-		</dict>
-		<key>7811C846-9F09-4FFD-90F4-980D4152807E</key>
+		<key>4C900D3F-1911-4F17-A6B6-A0BCEBAF0C7E</key>
 		<dict>
 			<key>from</key>
 			<string>B706680D-52D7-4B00-AB57-C96563B2FD46 - B706680D-52D7-4B00-AB57-C96563B2FD46</string>
 			<key>to</key>
 			<string>5385AFB0-BF6B-45A8-AD51-BF543537358F - 5385AFB0-BF6B-45A8-AD51-BF543537358F</string>
 		</dict>
-		<key>853BA35F-8AC8-4DE9-8ADF-A11E1D6C4735</key>
+		<key>5DFF6341-20F5-4F91-9C44-03CCF1A2477E</key>
 		<dict>
 			<key>from</key>
 			<string>53843ECF-35B2-41E9-BEE8-26023D96C52F - 53843ECF-35B2-41E9-BEE8-26023D96C52F</string>
 			<key>to</key>
 			<string>B706680D-52D7-4B00-AB57-C96563B2FD46 - B706680D-52D7-4B00-AB57-C96563B2FD46</string>
+		</dict>
+		<key>EB082D1B-254A-4821-AF34-078AC635A95A</key>
+		<dict>
+			<key>from</key>
+			<string>E1F250B0-45C8-4DFC-B21C-C6E9AFD06D1D - E1F250B0-45C8-4DFC-B21C-C6E9AFD06D1D</string>
+			<key>to</key>
+			<string>53843ECF-35B2-41E9-BEE8-26023D96C52F - 53843ECF-35B2-41E9-BEE8-26023D96C52F</string>
 		</dict>
 	</dict>
 	<key>variables</key>
