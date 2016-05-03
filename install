@@ -82,11 +82,11 @@ end
 # Install the OS X contextual menu Automator services.
 def install_services
 	# Files to download
-	curls = [	"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-brocade", 
-						"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-HP",
-						"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-linux",
-						"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-screenos",
-						"curl -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-windows"
+	curls = [	"curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-brocade", 
+						"curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-HP",
+						"curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-linux",
+						"curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-screenos",
+						"curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/placeholder-windows"
 					]
 
 	Dir.chdir(File.expand_path("~/Library/services"))
