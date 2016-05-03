@@ -1,0 +1,39 @@
+#!/usr/bin/ruby
+
+system "clear"
+
+puts "Mac Formatter Installer"
+puts
+puts
+puts "This script will install the following:"
+puts "1. The mac_formatter command line tool"
+puts "2. The Docopt gem, required by the cli tool"
+puts "3. The OS X services providing right-click conversions"
+
+# prompt for confirmation.
+
+
+
+# install docopt
+
+def install_docopt
+	# Check for docopt gem. Use system gem, not rbenv or rvm.
+	# The OS X services will require use of system Ruby.
+	docopt_status = `/usr/bin/gem list | grep docopt`
+
+	if docopt_status.length == 0
+		puts "Docopt gem does not appear to be installed."
+		puts "Installing..."
+		`sudo /usr/bin/gem install docopt --no-doc --no-ri`
+		if $?.success?
+			puts "Docopt installed successfully."
+		else
+			puts "Docopt gem failed to install."
+			puts "Check your Ruby configuration and try again."
+			exit
+		end
+	end	
+end
+
+
+
