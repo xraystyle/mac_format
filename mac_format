@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby 
+#!/usr/bin/ruby
 
 # Check for docopt gem.
 gem_status = `gem list | grep docopt`
@@ -36,8 +36,8 @@ DOCOPT
 def strip_mac(mac)
   clean = mac.gsub(/[^\d\w]/, '').strip.chomp
   unless clean.length == 12
-    puts "#{mac} appears to be an invalid MAC address!"
-    exit!
+    puts "\"#{mac}\" appears to be an invalid MAC address!"
+    exit
   end
   clean
 end
