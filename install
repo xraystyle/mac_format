@@ -93,7 +93,7 @@ def install_services
 		puts "Try running the installer again."
 		exit
 	end
-	`rm services.tar`
+	`rm services.tar.gz`
 	puts "OS X services installed successfully."
 	puts 
 
