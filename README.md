@@ -33,3 +33,9 @@ Sample output:
 	ScreenOS:              001122aabbcc
 	HP:                    001122-aabbcc
 	Brocade/Cisco:         0011.22aa.bbcc
+
+
+
+To uninstall, paste the following command into a terminal window:
+
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/xraystyle/mac_format/master/uninstall)"
