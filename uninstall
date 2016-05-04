@@ -1,0 +1,17 @@
+#!/usr/bin/ruby
+
+puts "MAC Formatter Uninstaller."
+
+puts "This will uninstall all the components of MAC formatter."
+puts "You may have to type your password."
+puts "Press enter to continue or ctrl-c to cancel."
+
+gets
+
+`sudo /usr/bin/gem uninstall docopt > /dev/null 2>&1`
+`rm ~/Library/Services/MAC\ Format*`
+`rm /usr/local/bin/mac_format`
+
+puts "MAC Formatter has been uninstalled."
+
+exit 0
