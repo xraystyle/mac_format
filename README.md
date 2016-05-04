@@ -1,9 +1,19 @@
 MAC Address Formatter
 ------------------------
 
-Output a MAC address in the formats used by various vendors on their router/switch hardware.
+Mac Address Formatter is a Mac OS X app that will reformat MAC addresses to different vendor formats.
 
-Requires the Docopt gem.
+It has two components, the CLI utility and the OS X contextual menu services.
+
+To install MAC Formatter, paste the following command into a terminal window:
+	
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/xraystyle/mac_format/master/install)"
+
+To use the contextual menu services, highlight a MAC address anywhere and right-click. Under the 'Services' submenu, click on the format you'd like to convert to. You'll see a notification that it's completed and the converted MAC address will be copied to your clipboard.
+
+CLI Tool instructions:
+
+The command name is 'mac_format' and it's installed to /usr/local/bin.
 
 	Usage:
 	  mac_format <mac>

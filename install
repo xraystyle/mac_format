@@ -87,7 +87,8 @@ def install_services
 	Dir.chdir(File.expand_path("~/Library/services"))
 	puts "Downloading the OS X right-click services..."
 
-	`curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/services.tar.gz && tar -xzf services.tar.gz > /dev/null`
+	`curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/services.tar.gz`
+	`tar -xzf services.tar.gz > /dev/null 2>&1`
 	unless $?.success?
 		puts "There was an error downloading the OS X services."
 		puts "Try running the installer again."
