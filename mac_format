@@ -121,13 +121,12 @@ begin
 
   # convert to the desired format.
   if dict["--convert"]
-    converted = convert(clean_mac, format)  
+    converted = convert(clean_mac, format).strip.chomp
   else
-    converted = convert(clean_mac)
+    converted = convert(clean_mac).strip.chomp
   end
   
   puts converted
-  puts
 rescue Docopt::Exit => e
   puts e.message  
 end
