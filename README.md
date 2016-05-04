@@ -9,7 +9,11 @@ To install MAC Formatter, paste the following command into a terminal window:
 	
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/xraystyle/mac_format/master/install)"
 
+Installing this app requires typing your admin password to install the required Ruby Gem, Docopt.
+
 To use the contextual menu services, highlight a MAC address anywhere and right-click. Under the 'Services' submenu, click on the format you'd like to convert to. You'll see a notification that it's completed and the converted MAC address will be copied to your clipboard.
+
+![Right-Click Screenshot](https://raw.githubusercontent.com/xraystyle/mac_format/master/right-click.png)
 
 CLI Tool instructions:
 
