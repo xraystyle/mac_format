@@ -13,6 +13,8 @@ if gem_status.length == 0
 end
 
 require 'docopt'
+require 'json'
+require 'open-uri'
 
 # Create heredoc for Docopt parser.
 doc = <<DOCOPT
@@ -20,6 +22,7 @@ MAC Address Formatter
 
 Usage:
   #{File.basename(__FILE__)} <mac>
+  #{File.basename(__FILE__)} -l <mac>
   #{File.basename(__FILE__)} -h | --help
   #{File.basename(__FILE__)} <mac> [-c|--convert <format>] 
 
@@ -27,6 +30,7 @@ Options:
   none          Show MAC in all known formats.
   -h --help     Show this screen.
   -c --convert  Specify a MAC address format. (Linux|Brocade|Cisco|ScreenOS|JunOS|MRV|HP|Dell|Windows)
+  -l            Perform a vendor lookup on the given MAC address.
 
 DOCOPT
 
@@ -103,6 +107,17 @@ def convert(mac, format=nil)
 end
 
 
+# OUI Lookup
+def lookup_vendor(mac)
+  api_response = open("http://mac2vendor.copypaste.at/api/v2/mac/#{mac}").read
+  mac_info = JSON.parse(api_response)
+  if mac_info['error']
+    "Unknown Vendor"
+  else
+    mac_info['data']['vendor']
+  end
+end
+
 
 ########### Start doing stuff. ###########
 begin
@@ -119,14 +134,20 @@ begin
     exit
   end
 
-  # convert to the desired format.
-  if dict["--convert"]
-    converted = convert(clean_mac, format).strip.chomp
+  if dict["-l"]
+    # lookup requested. Don't convert anything.
+    vendor = lookup_vendor(clean_mac)
+    puts vendor
   else
-    converted = convert(clean_mac).strip.chomp
+  # convert to the desired format.
+    if dict["--convert"]
+      converted = convert(clean_mac, format).strip.chomp
+    else
+      converted = convert(clean_mac).strip.chomp
+    end  
+    puts converted
   end
-  
-  puts converted
+
 rescue Docopt::Exit => e
   puts e.message  
 end
