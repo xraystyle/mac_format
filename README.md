@@ -43,3 +43,11 @@ Sample output:
 To uninstall, paste the following command into a terminal window:
 
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/xraystyle/mac_format/master/uninstall)"
+
+
+Updates
+--------------
+
+5/3/2016
+
+Converted from just a CLI tool to integrated OS X contextual menu services app. 
