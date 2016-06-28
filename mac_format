@@ -122,16 +122,14 @@ begin
 
   if dict["-l"]
     # lookup requested. Don't convert anything.
-    vendor = lookup_vendor(clean_mac)
-    puts vendor
+    puts lookup_vendor(clean_mac)
   else
   # convert to the desired format.
     if dict["--convert"]
-      converted = convert(clean_mac, format).strip.chomp
+      puts convert(clean_mac, format).strip.chomp
     else
-      converted = convert(clean_mac).strip.chomp
+      puts convert(clean_mac).strip.chomp
     end  
-    puts converted
   end
 
 rescue Docopt::Exit => e
