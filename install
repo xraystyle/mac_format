@@ -84,7 +84,7 @@ end
 
 # Install the OS X contextual menu Automator services.
 def install_services
-	Dir.chdir(File.expand_path("~/Library/services"))
+	Dir.chdir(File.expand_path("~/Library/Services"))
 	puts "Downloading the OS X right-click services..."
 
 	`curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/services.tar.gz`

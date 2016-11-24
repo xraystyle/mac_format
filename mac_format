@@ -95,7 +95,7 @@ end
 
 # OUI Lookup
 def lookup_vendor(mac)
-  api_response = open("http://mac2vendor.copypaste.at/api/v2/mac/#{mac}").read
+  api_response = open("http://mac2vendor.copypaste.at/api/v3/mac/#{mac}").read
   mac_info = JSON.parse(api_response)
   if mac_info['error']
     "Unknown Vendor"
