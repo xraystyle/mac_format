@@ -42,7 +42,7 @@ Sample output:
 	~$ localhost: mac_format 00:11:22:aa:bb:cc
 
 	Linux/JunOS/MRV/Dell:  00:11:22:aa:bb:cc
-	Windows:			   00-11-22-aa-bb-cc
+	Windows:	       00-11-22-aa-bb-cc
 	ScreenOS:              001122aabbcc
 	HP:                    001122-aabbcc
 	Brocade/Cisco:         0011.22aa.bbcc
