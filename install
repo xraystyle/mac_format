@@ -18,85 +18,90 @@ response = gets.chomp.strip.downcase
 
 options = %w(y n)
 until options.include? response
-	puts "Invalid option. Enter y or n."
-	print "> "
-	response = gets.chomp.strip.downcase
+  puts "Invalid option. Enter y or n."
+  print "> "
+  response = gets.chomp.strip.downcase
 end
 
 case response
 when "n"
-	puts "Exiting..."
-	sleep 2
-	exit
+  puts "Exiting..."
+  sleep 2
+  exit
 when "y"
-	puts "Begining install..."
-	sleep 2
-	puts
+  puts "Begining install..."
+  sleep 2
+  puts
 end
 
 
 # install the Docopt gem.
 def install_docopt
-	# Check for docopt gem. Use system gem, not rbenv or rvm.
-	# The OS X services will require use of system Ruby.
-	docopt_status = `/usr/bin/gem list | grep docopt 2> /dev/null`
-
-	if docopt_status.length == 0
-		puts "Docopt gem does not appear to be installed."
-		puts "Installing..."
-		`sudo /usr/bin/gem install docopt --no-doc --no-ri 2> /dev/null`
-		if $?.success?
-			puts
-			puts "Docopt installed successfully."
-		else
-			puts "Docopt gem failed to install."
-			puts "Check your Ruby configuration and try again."
-			exit
-		end
-	end	
+  # Check for docopt gem. Use system gem, not rbenv or rvm.
+  # The OS X services will require use of system Ruby.
+  begin
+    require 'docopt'
+    docopt_status = true
+  rescue LoadError => e
+    docopt_status = false  
+  end
+  
+  unless docopt_status
+    puts "Docopt gem does not appear to be installed."
+    puts "Installing..."
+    `sudo /usr/bin/gem install docopt --no-doc --no-ri 2> /dev/null`
+    if $?.success?
+      puts
+      puts "Docopt installed successfully."
+    else
+      puts "Docopt gem failed to install."
+      puts "Check your Ruby configuration and try again."
+      exit
+    end
+  end  
 end
 
 
 # Install the mac_format CLI Tool.
 def install_cli_tool
-	# check for /usr/local/bin. Create if necessary.
-	if File.directory?('/usr/local/bin')
-		puts "/usr/local/bin exists..."
-	else
-		puts "/usr/local/bin does not exist, creating..."
-		Dir.mkdir('/usr/local/bin', 0755)
-	end
+  # check for /usr/local/bin. Create if necessary.
+  if File.directory?('/usr/local/bin')
+    puts "/usr/local/bin exists..."
+  else
+    puts "/usr/local/bin does not exist, creating..."
+    Dir.mkdir('/usr/local/bin', 0755)
+  end
 
-	Dir.chdir('/usr/local/bin')
+  Dir.chdir('/usr/local/bin')
 
-	# Download mac_format
-	puts "Downloading CLI tool..."
-	`curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/mac_format && chmod a+x mac_format`
-	if $?.success?
-		puts "mac_format CLI tool installed..."
-		puts
-	else
-		puts "Error installing CLI tool."
-		puts "mac_format failed to download."
-		exit
-	end
+  # Download mac_format
+  puts "Downloading CLI tool..."
+  `curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/mac_format && chmod a+x mac_format`
+  if $?.success?
+    puts "mac_format CLI tool installed..."
+    puts
+  else
+    puts "Error installing CLI tool."
+    puts "mac_format failed to download."
+    exit
+  end
 end
 
 # Install the OS X contextual menu Automator services.
 def install_services
-	Dir.chdir(File.expand_path("~/Library/Services"))
-	puts "Downloading the OS X right-click services..."
+  Dir.chdir(File.expand_path("~/Library/Services"))
+  puts "Downloading the OS X right-click services..."
 
-	`curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/services.tar.gz`
-	`tar -xzf services.tar.gz > /dev/null 2>&1`
-	unless $?.success?
-		puts "There was an error downloading the OS X services."
-		puts "Try running the installer again."
-		exit
-	end
-	`rm services.tar.gz`
-	puts "OS X services installed successfully."
-	puts 
+  `curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/services.tar.gz`
+  `tar -xzf services.tar.gz > /dev/null 2>&1`
+  unless $?.success?
+    puts "There was an error downloading the OS X services."
+    puts "Try running the installer again."
+    exit
+  end
+  `rm services.tar.gz`
+  puts "OS X services installed successfully."
+  puts 
 
 end
 
