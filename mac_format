@@ -1,9 +1,9 @@
 #!/usr/bin/ruby
 
 # Check for docopt gem.
-gem_status = `gem list | grep docopt`
-
-if gem_status.length == 0
+begin
+  require 'docopt'
+rescue LoadError => e
   puts "The Docopt gem does not appear to be installed, which this app requires."
   puts "You can install it by running the command 'sudo gem install docopt'"
   puts "If you're using a Ruby version manager like RVM you may not want to use sudo."
@@ -12,7 +12,6 @@ if gem_status.length == 0
   exit!
 end
 
-require 'docopt'
 require 'json'
 require 'open-uri'
 
@@ -33,6 +32,14 @@ Options:
   -l            Perform a vendor lookup on the given MAC address.
 
 DOCOPT
+
+
+# add back dropped leading zeros into mac addresses.
+def restore_zeros(mac)
+  octets = mac.split(":")
+  octets.each { |o| o.prepend("0") if o.length == 1 }
+  octets.join
+end
 
 
 # Validate the mac address.
@@ -111,6 +118,11 @@ begin
   dict = Docopt::docopt(doc) 
   format = dict["<format>"].strip.chomp.downcase if dict["<format>"]
 
+  # deal with dropped leading zeros in mac addresses separated by colons.
+  if dict['<mac>'].match(/:/)
+    dict['<mac>'] = restore_zeros(dict['<mac>'])
+  end
+  
   # clean the mac.
   clean_mac = strip_mac(dict['<mac>'])
 

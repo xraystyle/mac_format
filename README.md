@@ -59,6 +59,14 @@ To uninstall, paste the following command into a terminal window:
 Updates
 --------------
 
+11/29/2017
+
+Added support for dropped leading zeros in MAC address octets, such as found with the `arp -a` command on OS X.
+
+Fixed High Sierra compatibility. High Sierra breaks Automator services in some very subtle and stupid ways, which means notifications sent from automator don't always work. Fixed the Automator services to work properly again.
+
+If you've upgraded to High Sierra, probably best to run the uninstall script to remove everything, then reinstall. 
+
 5/4/2016
 
 Added vendor OUI lookup functionality! You can now lookup a vendor with either the CLI tool or with the new OS X contextual menu service!
