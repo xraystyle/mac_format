@@ -303,7 +303,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>/usr/local/bin/mac_format "$@" -c screenos</string>
+					<string>/usr/local/bin/mac_format -l "$@"</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -450,7 +450,7 @@
 						<key>isPathPopUp</key>
 						<false/>
 						<key>selectedVariableUUID</key>
-						<string>1C2A604C-CDE6-4818-AAAD-B4D604A33333</string>
+						<string>ED8F9DC9-CD21-4739-A31E-5359B5DBC6F8</string>
 						<key>variableUUIDsInMenu</key>
 						<array/>
 					</dict>
@@ -473,7 +473,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>variableUUID</key>
-					<string>1C2A604C-CDE6-4818-AAAD-B4D604A33333</string>
+					<string>ED8F9DC9-CD21-4739-A31E-5359B5DBC6F8</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.Set_Value_of_Variable</string>
@@ -541,77 +541,6 @@
 					<key>Container</key>
 					<string>List</string>
 					<key>Optional</key>
-					<false/>
-					<key>Types</key>
-					<array>
-						<string>com.apple.cocoa.attributed-string</string>
-					</array>
-				</dict>
-				<key>AMActionVersion</key>
-				<string>1.2.1</string>
-				<key>AMApplication</key>
-				<array>
-					<string>System</string>
-				</array>
-				<key>AMParameterProperties</key>
-				<dict/>
-				<key>AMProvides</key>
-				<dict>
-					<key>Container</key>
-					<string>List</string>
-					<key>Optional</key>
-					<false/>
-					<key>Types</key>
-					<array>
-						<string>com.apple.cocoa.attributed-string</string>
-					</array>
-				</dict>
-				<key>ActionBundlePath</key>
-				<string>/System/Library/Automator/Copy to Clipboard.action</string>
-				<key>ActionName</key>
-				<string>Copy to Clipboard</string>
-				<key>ActionParameters</key>
-				<dict/>
-				<key>BundleIdentifier</key>
-				<string>com.apple.Automator.CopyToClipboard</string>
-				<key>CFBundleVersion</key>
-				<string>1.2.1</string>
-				<key>CanShowSelectedItemsWhenRun</key>
-				<true/>
-				<key>CanShowWhenRun</key>
-				<false/>
-				<key>Category</key>
-				<array>
-					<string>AMCategoryUtilities</string>
-				</array>
-				<key>Class Name</key>
-				<string>AMCopyToClipboardAction</string>
-				<key>InputUUID</key>
-				<string>82B34A9C-2803-4E68-A903-E4AB4FB0E0BD</string>
-				<key>Keywords</key>
-				<array>
-					<string>Copy</string>
-				</array>
-				<key>OutputUUID</key>
-				<string>F4CED961-9002-4A1A-9F6A-C0CA78D66E9A</string>
-				<key>UUID</key>
-				<string>CA9872C6-0BDF-4CB3-ACFC-C21347CBB2C2</string>
-				<key>UnlocalizedApplications</key>
-				<array>
-					<string>System</string>
-				</array>
-				<key>arguments</key>
-				<dict/>
-			</dict>
-		</dict>
-		<dict>
-			<key>action</key>
-			<dict>
-				<key>AMAccepts</key>
-				<dict>
-					<key>Container</key>
-					<string>List</string>
-					<key>Optional</key>
 					<true/>
 					<key>Types</key>
 					<array/>
@@ -627,15 +556,13 @@
 					<key>message</key>
 					<dict>
 						<key>tokenizedValue</key>
-						<array>
-							<string>Formatted MAC copied to clipboard</string>
-						</array>
+						<array/>
 					</dict>
 					<key>subtitle</key>
 					<dict>
 						<key>tokenizedValue</key>
 						<array>
-							<string>$(1C2A604C-CDE6-4818-AAAD-B4D604A33333)</string>
+							<string>$(ED8F9DC9-CD21-4739-A31E-5359B5DBC6F8)</string>
 						</array>
 					</dict>
 					<key>title</key>
@@ -662,7 +589,7 @@
 					<key>message</key>
 					<string>Formatted MAC copied to clipboard</string>
 					<key>subtitle</key>
-					<string>$(1C2A604C-CDE6-4818-AAAD-B4D604A33333)</string>
+					<string>$(ED8F9DC9-CD21-4739-A31E-5359B5DBC6F8)</string>
 					<key>title</key>
 					<string>MAC Format</string>
 				</dict>
@@ -737,7 +664,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>392.000000:911.000000</string>
+				<string>392.000000:845.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Display Notification.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -747,40 +674,33 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>0262744E-3822-4BFB-A057-F17D384C4498</key>
+		<key>1CFFC6C8-28D7-4589-B6EF-4AF228F00DD0</key>
 		<dict>
 			<key>from</key>
 			<string>C5276C01-9E07-42A6-A293-984E6E593E1F - C5276C01-9E07-42A6-A293-984E6E593E1F</string>
 			<key>to</key>
 			<string>A981BF12-BCD6-4E95-ACAB-9EDFBC205E6F - A981BF12-BCD6-4E95-ACAB-9EDFBC205E6F</string>
 		</dict>
-		<key>2DBFBF37-FC58-4420-A74D-34C12A42B774</key>
+		<key>5EBF88D9-8E4B-4739-A3BC-FFE4C0D984F7</key>
 		<dict>
 			<key>from</key>
 			<string>5838F2E5-9CAF-4BA1-9263-FAC29888C165 - 5838F2E5-9CAF-4BA1-9263-FAC29888C165</string>
 			<key>to</key>
 			<string>C5276C01-9E07-42A6-A293-984E6E593E1F - C5276C01-9E07-42A6-A293-984E6E593E1F</string>
 		</dict>
-		<key>5C42169E-7007-48BB-8A5C-A5572273513A</key>
+		<key>6380F5F9-6A2E-4F1F-9D82-E631A43C83A9</key>
+		<dict>
+			<key>from</key>
+			<string>516CBB8F-82FD-40D0-B9B1-A1CEC4FE41EA - 516CBB8F-82FD-40D0-B9B1-A1CEC4FE41EA</string>
+			<key>to</key>
+			<string>AE4F96F5-EFF9-4C86-8085-AFB85710880A - AE4F96F5-EFF9-4C86-8085-AFB85710880A</string>
+		</dict>
+		<key>7F9A7879-DE9D-4657-B4E4-F433637ECC02</key>
 		<dict>
 			<key>from</key>
 			<string>A981BF12-BCD6-4E95-ACAB-9EDFBC205E6F - A981BF12-BCD6-4E95-ACAB-9EDFBC205E6F</string>
 			<key>to</key>
 			<string>516CBB8F-82FD-40D0-B9B1-A1CEC4FE41EA - 516CBB8F-82FD-40D0-B9B1-A1CEC4FE41EA</string>
-		</dict>
-		<key>8F59CB6F-9FD1-4FC0-8A7C-F8DEF4064D05</key>
-		<dict>
-			<key>from</key>
-			<string>CA9872C6-0BDF-4CB3-ACFC-C21347CBB2C2 - CA9872C6-0BDF-4CB3-ACFC-C21347CBB2C2</string>
-			<key>to</key>
-			<string>AE4F96F5-EFF9-4C86-8085-AFB85710880A - AE4F96F5-EFF9-4C86-8085-AFB85710880A</string>
-		</dict>
-		<key>F2D27B52-E4F2-43FB-A0EF-C4B6CB0E6E95</key>
-		<dict>
-			<key>from</key>
-			<string>516CBB8F-82FD-40D0-B9B1-A1CEC4FE41EA - 516CBB8F-82FD-40D0-B9B1-A1CEC4FE41EA</string>
-			<key>to</key>
-			<string>CA9872C6-0BDF-4CB3-ACFC-C21347CBB2C2 - CA9872C6-0BDF-4CB3-ACFC-C21347CBB2C2</string>
 		</dict>
 	</dict>
 	<key>variables</key>
@@ -792,6 +712,14 @@
 			<string>com.apple.Automator.Variable.Storage</string>
 			<key>name</key>
 			<string>mac_address</string>
+		</dict>
+		<dict>
+			<key>UUID</key>
+			<string>ED8F9DC9-CD21-4739-A31E-5359B5DBC6F8</string>
+			<key>identifier</key>
+			<string>com.apple.Automator.Variable.Storage</string>
+			<key>name</key>
+			<string>vendor</string>
 		</dict>
 	</array>
 	<key>workflowMetaData</key>
