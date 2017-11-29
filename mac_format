@@ -34,6 +34,14 @@ Options:
 DOCOPT
 
 
+# add back dropped leading zeros into mac addresses.
+def restore_zeros(mac)
+  octets = mac.split(":")
+  octets.each { |o| o.prepend("0") if o.length == 1 }
+  octets.join
+end
+
+
 # Validate the mac address.
 def valid_mac?(mac)
   valid_chars = "1234567890abcdef"
@@ -110,6 +118,11 @@ begin
   dict = Docopt::docopt(doc) 
   format = dict["<format>"].strip.chomp.downcase if dict["<format>"]
 
+  # deal with dropped leading zeros in mac addresses separated by colons.
+  if dict['<mac>'].match(/:/)
+    dict['<mac>'] = restore_zeros(dict['<mac>'])
+  end
+  
   # clean the mac.
   clean_mac = strip_mac(dict['<mac>'])
 
