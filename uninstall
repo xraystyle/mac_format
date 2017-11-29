@@ -9,7 +9,7 @@ puts "Press enter to continue or ctrl-c to cancel."
 gets
 
 `sudo /usr/bin/gem uninstall docopt > /dev/null 2>&1`
-`sudo rm ~/Library/Services/MAC*`
+`sudo rm -rf ~/Library/Services/MAC*`
 `sudo rm /usr/local/bin/mac_format`
 
 puts "MAC Formatter has been uninstalled."

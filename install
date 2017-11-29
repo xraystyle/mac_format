@@ -76,7 +76,7 @@ def install_cli_tool
 
   # Download mac_format
   puts "Downloading CLI tool..."
-  `curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/mac_format && chmod a+x mac_format`
+  `sudo curl -s -O https://raw.githubusercontent.com/xraystyle/mac_format/master/mac_format && sudo chmod a+x mac_format`
   if $?.success?
     puts "mac_format CLI tool installed..."
     puts

@@ -8,7 +8,7 @@
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>HS - Linux, JunOS, MRV, Dell</string>
+				<string>MAC Format - Linux, JunOS, MRV, Dell</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>
