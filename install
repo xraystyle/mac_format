@@ -45,7 +45,7 @@ def install_docopt
   rescue LoadError => e
     docopt_status = false  
   end
-  
+
   unless docopt_status
     puts "Docopt gem does not appear to be installed."
     puts "Installing..."
@@ -69,7 +69,7 @@ def install_cli_tool
     puts "/usr/local/bin exists..."
   else
     puts "/usr/local/bin does not exist, creating..."
-    Dir.mkdir('/usr/local/bin', 0755)
+    `sudo mkdir /usr/local/bin && chmod 0755 /usr/local/bin`
   end
 
   Dir.chdir('/usr/local/bin')
