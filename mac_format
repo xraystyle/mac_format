@@ -1,9 +1,9 @@
 #!/usr/bin/ruby
 
 # Check for docopt gem.
-gem_status = `gem list | grep docopt`
-
-if gem_status.length == 0
+begin
+  require 'docopt'
+rescue LoadError => e
   puts "The Docopt gem does not appear to be installed, which this app requires."
   puts "You can install it by running the command 'sudo gem install docopt'"
   puts "If you're using a Ruby version manager like RVM you may not want to use sudo."
@@ -12,7 +12,6 @@ if gem_status.length == 0
   exit!
 end
 
-require 'docopt'
 require 'json'
 require 'open-uri'
 
