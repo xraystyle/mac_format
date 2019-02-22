@@ -59,6 +59,10 @@ To uninstall, paste the following command into a terminal window:
 Updates
 --------------
 
+2/22/2019
+
+Updated to support latest version of the vendor lookup API. The API was updated which broke everything. It's all functional again.
+
 11/29/2017
 
 Added support for dropped leading zeros in MAC address octets, such as found with the `arp -a` command on OS X.
