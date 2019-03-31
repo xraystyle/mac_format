@@ -11,15 +11,15 @@ To install MAC Formatter, paste the following command into a terminal window:
 
 If you've previously installed and want to update to the newest version, just re-run the above script again.
 
-Installing this app requires typing your admin password to install the required Ruby Gem, Docopt.
+Installing this app requires typing your admin password to install the required Ruby Gem, `Docopt`.
 
-To use the contextual menu services, highlight a MAC address anywhere and right-click. Under the 'Services' submenu, click on the format you'd like to convert to. You'll see a notification that it's completed and the converted MAC address will be copied to your clipboard. If you select the Vendor Lookup service option, you'll receive a notification with the name of the vendor.
+To use the contextual menu services, highlight a MAC address anywhere and right-click. Under the `Services` submenu, click on the format you'd like to convert to. You'll see a notification that it's completed and the converted MAC address will be copied to your clipboard. If you select the Vendor Lookup service option, you'll receive a notification with the name of the vendor.
 
 ![Right-Click Screenshot](https://raw.githubusercontent.com/xraystyle/mac_format/master/right-click.png)
 
 CLI Tool instructions:
 
-The command name is 'mac_format' and it's installed to /usr/local/bin.
+The command name is `mac_format` and it's installed to `/usr/local/bin`.
 
 	Usage:
 	  mac_format <mac>
@@ -35,7 +35,7 @@ The command name is 'mac_format' and it's installed to /usr/local/bin.
 
 Recognized vendor MAC formats: Linux, Windows, Juniper ScreenOS and Junos, Cisco, MRV, Brocade, HP and Dell Switches.
 
-mac_format will take a MAC address in any of the vendor formats listed above and translate it to any other, or when used without a -c argument will output all known formats.
+mac_format will take a MAC address in any of the vendor formats listed above and translate it to any other, or when used without a `-c` argument will output all known formats.
 
 Sample output:
 
