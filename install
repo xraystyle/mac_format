@@ -29,7 +29,7 @@ when "n"
   sleep 2
   exit
 when "y"
-  puts "Begining install..."
+  puts "Beginning install..."
   sleep 2
   puts
 end
@@ -49,7 +49,7 @@ def install_docopt
   unless docopt_status
     puts "Docopt gem does not appear to be installed."
     puts "Installing..."
-    `sudo /usr/bin/gem install docopt --no-doc --no-ri 2> /dev/null`
+    `sudo /usr/bin/gem install docopt --no-document 2> /dev/null`
     if $?.success?
       puts
       puts "Docopt installed successfully."
