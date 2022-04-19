@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>419</string>
+	<string>444.1</string>
 	<key>AMApplicationVersion</key>
-	<string>2.6</string>
+	<string>2.8</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -59,11 +59,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>export PATH=$PATH:/usr/local/bin
-for f in "$@"
-do
-	mac_format -l "$f"
-done</string>
+					<string>echo "$@" | xargs -n 1 /usr/local/bin/mac_format -l</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -173,12 +169,10 @@ done</string>
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>767.000000:253.000000</string>
+				<string>309.000000:253.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -238,7 +232,7 @@ done</string>
 					<string>174E416B-A45A-4B1F-A16D-AAA27BE36647</string>
 				</dict>
 				<key>BundleIdentifier</key>
-				<string>com.apple.Automator.Set_Value_of_Variable</string>
+				<string>com.apple.Automator.SetValueofVariable</string>
 				<key>CFBundleVersion</key>
 				<string>1.0.2</string>
 				<key>CanShowSelectedItemsWhenRun</key>
@@ -285,12 +279,10 @@ done</string>
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>767.000000:359.000000</string>
+				<string>309.000000:359.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -423,12 +415,10 @@ done</string>
 						<string>2</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>767.000000:549.000000</string>
+				<string>309.000000:549.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Display Notification.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -438,19 +428,19 @@ done</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>430B9269-1A47-416F-82A0-228CF1271475</key>
-		<dict>
-			<key>from</key>
-			<string>A5055C27-2899-4EF8-B94E-38732875366C - A5055C27-2899-4EF8-B94E-38732875366C</string>
-			<key>to</key>
-			<string>D54EAEBA-8D1B-4C41-BC7B-39052FF56F51 - D54EAEBA-8D1B-4C41-BC7B-39052FF56F51</string>
-		</dict>
-		<key>E6CB10A1-E71F-4BAA-AC37-6F21B293B64D</key>
+		<key>1C1B2320-7304-4D7A-9893-4DD7EE5FB963</key>
 		<dict>
 			<key>from</key>
 			<string>D54EAEBA-8D1B-4C41-BC7B-39052FF56F51 - D54EAEBA-8D1B-4C41-BC7B-39052FF56F51</string>
 			<key>to</key>
 			<string>AD423563-13E8-4B04-A977-6503E04ABA66 - AD423563-13E8-4B04-A977-6503E04ABA66</string>
+		</dict>
+		<key>C1D25E3E-BA40-41BC-A038-C2D99569458B</key>
+		<dict>
+			<key>from</key>
+			<string>A5055C27-2899-4EF8-B94E-38732875366C - A5055C27-2899-4EF8-B94E-38732875366C</string>
+			<key>to</key>
+			<string>D54EAEBA-8D1B-4C41-BC7B-39052FF56F51 - D54EAEBA-8D1B-4C41-BC7B-39052FF56F51</string>
 		</dict>
 	</dict>
 	<key>variables</key>
