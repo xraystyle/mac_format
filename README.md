@@ -59,6 +59,11 @@ To uninstall, paste the following command into a terminal window:
 Updates
 --------------
 
+10/26/2026
+
+Updated to a new lookup API as the old one seems to have gone offline.
+Tested working on macOS Tahoe 26.7.1
+
 2/22/2019
 
 Tested working on Mojave!
