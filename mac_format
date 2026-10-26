@@ -102,7 +102,7 @@ end
 
 # OUI Lookup
 def lookup_vendor(mac)
-  api_response = open("https://api.maclookup.app/v2/macs/#{mac}").read
+  api_response = URI.open("https://api.maclookup.app/v2/macs/#{mac}").read
   mac_info = JSON.parse(api_response)
   if mac_info['success'] == false
     "Lookup Error"
